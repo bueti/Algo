@@ -50,9 +50,7 @@ public class Task1Impl_Buetikofer extends Task1 {
     @Override
     public int compareTo(Task1 task4Book) {
 
-        return -1; // kleiner
-        //return 0; // gleich
-        //return 1; // gršsser
+        return this.getTitle().compareTo(task4Book.getTitle());
     }
 
 }

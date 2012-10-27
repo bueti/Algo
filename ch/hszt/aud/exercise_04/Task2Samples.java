@@ -32,14 +32,14 @@ public final class Task2Samples {
 
 		System.out.println("---------- Spirituosenliste 01:30 ----------");
 		System.out.println("Leer ist: Grappe, Tequila, Weissflog, Russion Standard, Absinthe, Cragganmore");
-		System.out.println("Somit bleibt übrig:\n");
+		System.out.println("Somit bleibt Ã¼brig:\n");
 		System.out.println(list.toString());
 		System.out.println();
 
 		/* Sortiertes Einfuegen */
 		list.deleteAllNodes();
 		System.out
-				.println("Unterdessen ist alles leer.\nNeu hinzugefügt wird in dieser Reihenfolge: \nTequila, Fernet Branca, Charteuse, Benedictine, Limoncello\n");
+				.println("Unterdessen ist alles leer.\nNeu hinzugefï¿½gt wird in dieser Reihenfolge: \nTequila, Fernet Branca, Charteuse, Benedictine, Limoncello\n");
 		list.sortedInsert(list.newListNode("Tequila"));
 		list.sortedInsert(list.newListNode("Fernet Branca"));
 		list.sortedInsert(list.newListNode("Chartreuse"));

@@ -6,8 +6,8 @@ public interface Task2 {
 	 * Interface einer Singly Linked List. Implementieren Sie die
 	 * definierten Methoden in Ihrer Klasse.
 	 * 
-	 * Für die Aufgabe 1.2 können Sie ebenfalls dieses Interface benutzen.
-	 * Die zu benutzende Methode ist bereits definiert. Sie müssen Sie nur
+	 * FÃ¼r die Aufgabe 1.2 kÃ¶nnen Sie ebenfalls dieses Interface benutzen.
+	 * Die zu benutzende Methode ist bereits definiert. Sie mÃ¼ssen Sie nur
 	 * noch implementieren. :-)
 	 */
 
@@ -28,13 +28,13 @@ public interface Task2 {
 	public void prepend(ListNode node) throws NullPointerException;
 
 	/**
-	 * @param node, der Node, welcher hinzugefügt wird.
+	 * @param node, der Node, welcher hinzugefÃ¼gt wird.
 	 * @throws NullPointerException, falls Node null.
 	 */
 	public void append(ListNode node) throws NullPointerException;
 
 	/**
-	 * @param node, der Node, welcher sortiert eingefügt wird.
+	 * @param node, der Node, welcher sortiert eingefï¿½gt wird.
 	 * @throws NullPointerException, falls node null.
 	 */
 	public void sortedInsert(ListNode node)
@@ -42,7 +42,7 @@ public interface Task2 {
 
 	/**
 	 * @param data, wert des Nodes als String.
-	 * @return, erster Node, welcher den Wert data enthält.
+	 * @return erster Node, welcher den Wert data enthï¿½lt.
 	 * @throws NullPointerException, falls data null.
 	 */
 	public ListNode firstNodeWith(String data)
@@ -56,7 +56,7 @@ public interface Task2 {
 			throws NullPointerException;
 
 	/**
-	 * Löscht alle Nodes.
+	 * LÃ¶scht alle Nodes.
 	 */
 	public void deleteAllNodes();
 
@@ -69,36 +69,8 @@ public interface Task2 {
 	public String WriteNodesInReverseOrder();
 
 	/**
-	 * @return, eine lesbare Liste der Werte der Nodes.
+	 * @return eine lesbare Liste der Werte der Nodes.
 	 */
 	public String toString();
 
-	/**
-	 * Innere Klasse für die einzelnen Nodes.
-	 */
-	public interface ListNode {
-
-		/**
-		 * @return nächster Node.
-		 */
-		public ListNode getNext();
-
-		/**
-		 * @param next, Node, welcher als nächster hinzugefügt wird.
-		 */
-		public void setNext(ListNode next);
-
-		/**
-		 * @return den Wert des aktuellen Nodes.
-		 */
-		public String getData();
-
-		/**
-		 * @param data, Wert des aktuellen Nodes.
-		 *            
-		 * @throws NullPointerException, falls data null.
-		 */
-		public void setData(String data) throws NullPointerException;
-
-	}
 }

@@ -23,7 +23,7 @@ public final class Task1Samples {
                 = new Task1Impl_Buetikofer
                 (new Task1.Author[]
                  {new Task1.Author("Nadja", "Abd El Farrag")},
-                 "Ungelogen“ (k)eine Liebesgeschichte",
+                 "Ungelogen (k)eine Liebesgeschichte",
                  "3-7766-2339-X",
                  "Herbig",
                  new Date(),
