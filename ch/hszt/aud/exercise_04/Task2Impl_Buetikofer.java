@@ -1,5 +1,9 @@
 package ch.hszt.aud.exercise_04;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 /**
  * Created with IntelliJ IDEA.
  * User: bbu
@@ -9,8 +13,7 @@ package ch.hszt.aud.exercise_04;
 public class Task2Impl_Buetikofer implements Task2 {
     // Instance Variables
     ListNode list;
-    ListNode nextNode;
-    Task2 singleLinkedList;
+    ListNode n;
 
     // Constructor
     public Task2Impl_Buetikofer() {
@@ -20,76 +23,127 @@ public class Task2Impl_Buetikofer implements Task2 {
     // Methods to overwrite from Task2
     @Override
     public ListNode newListNode(String data) throws NullPointerException {
-        nextNode = new ListNodeImpl();
-        if (nextNode == null) {
+        n = new ListNodeImpl();
+        if (n == null) {
             System.out.println("Error: heap overflow");
             return null;
         }
-        nextNode.setNext(null);
-        nextNode.setData(data);
+        n.setNext(null);
+        n.setData(data);
 
-        return nextNode;
+        return n;
     }
 
     @Override
-    public void prepend(ListNode list) throws NullPointerException {
-        nextNode.setNext(list);
-        list = nextNode;
+    public void prepend(ListNode node) throws NullPointerException {
+        node.setNext(list);
+        this.list = node;
     }
 
     @Override
-    public void append(ListNode list) throws NullPointerException {
+    public void append(ListNode node) throws NullPointerException {
         ListNode lastNode;
 
         if(list == null) {
-            list = nextNode;
+            list = node;
         } else {
             lastNode = list;
             while(lastNode.getNext() != null) {
                 lastNode = lastNode.getNext();
             }
 
-            nextNode = lastNode.getNext();
+            lastNode.setNext(n);
         }
     }
 
     @Override
-    public void sortedInsert(ListNode list) throws NullPointerException {
+    public void sortedInsert(ListNode node) throws NullPointerException {
+        ListNode pred = null;
+        ListNode succ = list;
+
+        while(succ != null) {
+            if( node.getData().compareTo(succ.getData())  == 1 ) {
+                pred = succ;
+            }
+            succ = succ.getNext();
+
+        }
+
+        if(pred == null) {
+            list = node;
+        } else {
+            pred.setNext(node);
+        }
+
+        node.setNext(succ);
 
     }
 
     @Override
     public ListNode firstNodeWith(String data) throws NullPointerException {
-        ListNode nextNodePtr;
-
-        nextNodePtr = list;
-
-        while(nextNodePtr != null && nextNodePtr.getData().equals(data) ) {
-            nextNodePtr = nextNodePtr.getNext();
+        while(list != null && !list.getData().equals(data) ) {
+            list = list.getNext();
         }
-        return nextNodePtr;
+        return list;
     }
 
     @Override
     public void deleteNodeWith(String data) throws NullPointerException {
-        //To change body of implemented methods use File | Settings | File Templates.
+        ListNode pred = null;
+        ListNode n = list;
+
+        while(n != null && !n.getData().equals(data)) {
+            pred = n;
+            n = n.getNext();
+        }
+
+        if(n!=null) {
+            if(pred == null) {
+                list = n.getNext();
+            } else {
+                pred.setNext(n.getNext());
+            }
+        }
+        // Dispose n
     }
 
     @Override
     public void deleteAllNodes() {
-        //To change body of implemented methods use File | Settings | File Templates.
+        list = null;
     }
 
     @Override
     public String WriteNodesInReverseOrder() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        ListNode pred = null;
+        ListNode n = list;
+        ListNode succ;
+
+        ArrayList<String> all = new ArrayList<String>();
+
+        while(n != null) {
+            all.add(n.getData());
+            succ = n.getNext();
+//            n = pred;
+//            succ.setNext(pred);
+            n = succ;
+        }
+
+        Collections.reverse(all);
+
+        return all.toString();
+
+
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        while(list.getNext() != null) {
-            sb.append(list.getData() + ", ");
-            list = list.getNext();
+        ListNode n = list;
+        while(n != null) {
+            sb.append(n.getData());
+            n = n.getNext();
+            if(n!=null) {
+                sb.append(", ");
+            }
         }
         return sb.toString();
     }

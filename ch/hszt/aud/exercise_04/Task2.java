@@ -34,7 +34,7 @@ public interface Task2 {
 	public void append(ListNode node) throws NullPointerException;
 
 	/**
-	 * @param node, der Node, welcher sortiert eingef�gt wird.
+	 * @param node, der Node, welcher sortiert eingefügt wird.
 	 * @throws NullPointerException, falls node null.
 	 */
 	public void sortedInsert(ListNode node)

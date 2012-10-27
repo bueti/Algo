@@ -5,6 +5,7 @@ public final class Task2Samples {
 	public static void main(String[] args) {
 		Task2 list = new Task2Impl_Buetikofer();
 
+
 		/* Spirituosenliste 21:00 */
 		list.prepend(list.newListNode("Grappa"));
 		list.prepend(list.newListNode("Fernet Branca"));
@@ -31,7 +32,7 @@ public final class Task2Samples {
 		list.deleteNodeWith("Cragganmore");
 
 		System.out.println("---------- Spirituosenliste 01:30 ----------");
-		System.out.println("Leer ist: Grappe, Tequila, Weissflog, Russion Standard, Absinthe, Cragganmore");
+		System.out.println("Leer ist: Grappa, Tequila, Weissflog, Russion Standard, Absinthe, Cragganmore");
 		System.out.println("Somit bleibt übrig:\n");
 		System.out.println(list.toString());
 		System.out.println();
@@ -39,7 +40,7 @@ public final class Task2Samples {
 		/* Sortiertes Einfuegen */
 		list.deleteAllNodes();
 		System.out
-				.println("Unterdessen ist alles leer.\nNeu hinzugef�gt wird in dieser Reihenfolge: \nTequila, Fernet Branca, Charteuse, Benedictine, Limoncello\n");
+				.println("Unterdessen ist alles leer.\nNeu hinzugefügt wird in dieser Reihenfolge: \nTequila, Fernet Branca, Charteuse, Benedictine, Limoncello\n");
 		list.sortedInsert(list.newListNode("Tequila"));
 		list.sortedInsert(list.newListNode("Fernet Branca"));
 		list.sortedInsert(list.newListNode("Chartreuse"));
