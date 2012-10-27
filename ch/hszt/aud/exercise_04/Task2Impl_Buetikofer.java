@@ -13,7 +13,7 @@ import java.util.Collections;
 public class Task2Impl_Buetikofer implements Task2 {
     // Instance Variables
     ListNode list;
-    ListNode n;
+//    ListNode n;
 
     // Constructor
     public Task2Impl_Buetikofer() {
@@ -23,7 +23,7 @@ public class Task2Impl_Buetikofer implements Task2 {
     // Methods to overwrite from Task2
     @Override
     public ListNode newListNode(String data) throws NullPointerException {
-        n = new ListNodeImpl();
+        ListNode n = new ListNodeImpl();
         if (n == null) {
             System.out.println("Error: heap overflow");
             return null;
@@ -52,7 +52,7 @@ public class Task2Impl_Buetikofer implements Task2 {
                 lastNode = lastNode.getNext();
             }
 
-            lastNode.setNext(n);
+            lastNode.setNext(node);
         }
     }
 
@@ -62,7 +62,7 @@ public class Task2Impl_Buetikofer implements Task2 {
         ListNode succ = list;
 
         while(succ != null) {
-            if( node.getData().compareTo(succ.getData())  == 1 ) {
+            if( node.getData().compareToIgnoreCase(succ.getData())  > 0 ) {
                 pred = succ;
             }
             succ = succ.getNext();
