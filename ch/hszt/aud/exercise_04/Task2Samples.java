@@ -3,7 +3,7 @@ package ch.hszt.aud.exercise_04;
 public final class Task2Samples {
 
 	public static void main(String[] args) {
-		Task2 list = new Task2Impl_Muster();
+		Task2 list = new Task2Impl_Buetikofer();
 
 		/* Spirituosenliste 21:00 */
 		list.prepend(list.newListNode("Grappa"));

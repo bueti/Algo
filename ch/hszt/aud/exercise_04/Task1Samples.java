@@ -10,7 +10,7 @@ public final class Task1Samples {
         System.out.println();
 
         Task1 task2Book1
-                = new Task1Impl_Muster
+                = new Task1Impl_Buetikofer
                 (new Task1.Author[]
                  {new Task1.Author("Dieter", "Bohlen")},
                  "Nichts als die Wahrheit",
@@ -20,7 +20,7 @@ public final class Task1Samples {
                  10.00);
 
         Task1 task2Book2
-                = new Task1Impl_Muster
+                = new Task1Impl_Buetikofer
                 (new Task1.Author[]
                  {new Task1.Author("Nadja", "Abd El Farrag")},
                  "Ungelogen“ (k)eine Liebesgeschichte",
@@ -30,7 +30,7 @@ public final class Task1Samples {
                  0.52);
 
         Task1 task2Book3
-                = new Task1Impl_Muster
+                = new Task1Impl_Buetikofer
                 (new Task1.Author[]
                  {new Task1.Author("Verona", "Pooth"),
                   new Task1.Author("Verona", "Feldbusch")},
