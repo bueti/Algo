@@ -56,27 +56,55 @@ public class Task2Impl_Buetikofer implements Task2 {
         }
     }
 
+//    @Override
+//    public void sortedInsert(ListNode node) throws NullPointerException {
+//        ListNode pred = null;
+//        ListNode succ = list;
+//
+//        while(succ != null) {
+//            if( node.getData().compareToIgnoreCase(succ.getData())  > 0 ) {
+//                pred = succ;
+//            }
+//            succ = succ.getNext();
+//
+//        }
+//
+//        if(pred == null) {
+//            list = node;
+//        } else {
+//            pred.setNext(node);
+//        }
+//
+//        node.setNext(succ);
+//
+//    }
+
     @Override
     public void sortedInsert(ListNode node) throws NullPointerException {
-        ListNode pred = null;
-        ListNode succ = list;
-
-        while(succ != null) {
-            if( node.getData().compareToIgnoreCase(succ.getData())  > 0 ) {
-                pred = succ;
-            }
-            succ = succ.getNext();
-
-        }
-
-        if(pred == null) {
+        if (list == null) {
             list = node;
+        } else if (list.getData().charAt(0) > node.getData().charAt(0)) {
+            // liegt lexikalisch nach dem ersten Node
+            prepend(node);
+        } else if (list.getNext() == null) {
+            // liegt lexikalisch vor dem ersten Node
+            list.setNext(node);
         } else {
-            pred.setNext(node);
+            ListNode curNode = list;
+            ListNode nextNode = curNode.getNext();
+
+            while (nextNode.getData().charAt(0) < node.getData().charAt(0) && nextNode != null) {
+                curNode = curNode.getNext();
+                nextNode = curNode.getNext();
+            }
+
+            if (nextNode != null) {
+                curNode.setNext(node);
+                node.setNext(nextNode);
+            } else {
+                curNode.setNext(node);
+            }
         }
-
-        node.setNext(succ);
-
     }
 
     @Override
@@ -114,18 +142,13 @@ public class Task2Impl_Buetikofer implements Task2 {
 
     @Override
     public String WriteNodesInReverseOrder() {
-        ListNode pred = null;
         ListNode n = list;
-        ListNode succ;
 
         ArrayList<String> all = new ArrayList<String>();
 
         while(n != null) {
             all.add(n.getData());
-            succ = n.getNext();
-//            n = pred;
-//            succ.setNext(pred);
-            n = succ;
+            n = n.getNext();
         }
 
         Collections.reverse(all);
