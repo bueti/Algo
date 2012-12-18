@@ -17,12 +17,14 @@ class Philosopher implements Runnable {
     static Random rand = new Random();
     AtomicBoolean end = new AtomicBoolean(false);
     int id;
-    PhilosopherState state = PhilosopherState.Get;
+    PhilosopherState state = PhilosopherState.Wartet;
     Fork left;
     Fork right;
     int timesEaten = 0;
+    private String name;
 
-    Philosopher() {
+    Philosopher(String name) {
+        setName(name);
         id = instances++;
         left = Main.forks.get(id);
         right = Main.forks.get((id+1)%Main.philosopherCount);
@@ -42,21 +44,28 @@ class Philosopher implements Runnable {
         } while (true);
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
     public void run() {
         do {
-            if (state == PhilosopherState.Pon) {    //  all that pondering
-                state = PhilosopherState.Get;       //  made me hungry
-            } else { // ==PhilosopherState.Get
+            if (state == PhilosopherState.Denkt) {    //  all that pondering
+                state = PhilosopherState.Wartet;       //  made me hungry
+            } else { // ==PhilosopherState.Wartet
                 if (token.get() == id) {            //  my turn now
                     waitForFork(left);
                     waitForFork(right);             //  Ah needs me some foahks!
                     token.set((id+2)% Main.philosopherCount);
-                    state = PhilosopherState.Eat;
+                    state = PhilosopherState.Isst;
                     timesEaten++;
                     sleep();                        //  eat for a while
                     left.holder.set(Fork.ON_TABLE);
                     right.holder.set(Fork.ON_TABLE);
-                    state = PhilosopherState.Pon;   //  ponder for a while
+                    state = PhilosopherState.Denkt;   //  ponder for a while
                     sleep();
                 } else {                    //  token.get() != id, so not my turn
                     sleep();

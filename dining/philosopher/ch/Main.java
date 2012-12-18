@@ -16,8 +16,11 @@ public class Main {
 
     public static void main(String[] args) {
         for (int i = 0 ; i < philosopherCount ; i++) forks.add(new Fork());
-        for (int i = 0 ; i < philosopherCount ; i++)
-            philosophers.add(new Philosopher());
+            philosophers.add(new Philosopher("Hans"));
+            philosophers.add(new Philosopher("Fritz"));
+            philosophers.add(new Philosopher("Willi"));
+            philosophers.add(new Philosopher("Ueli"));
+            philosophers.add(new Philosopher("Uwe"));
         for (Philosopher p : philosophers) new Thread(p).start();
         long endTime = System.currentTimeMillis() + (runSeconds * 1000);
 
@@ -43,7 +46,7 @@ public class Main {
 
         for (Philosopher p : philosophers) p.end.set(true);
         for (Philosopher p : philosophers)
-            System.out.printf("P%02d: ate %,d times, %,d/sec\n",
+            System.out.printf(p.getName() + ": ass %,d times, %,d/sec\n",
                     p.id, p.timesEaten, p.timesEaten/runSeconds);
     }
 }

@@ -7,5 +7,5 @@ package dining.philosopher.ch;
  * Time: 16:34
  */
 public enum PhilosopherState {
-    Get, Eat, Pon
+    Wartet, Isst, Denkt
 }
