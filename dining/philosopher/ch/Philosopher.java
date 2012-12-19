@@ -17,7 +17,7 @@ class Philosopher implements Runnable {
     static Random rand = new Random();
     AtomicBoolean end = new AtomicBoolean(false);
     int id;
-    PhilosopherState state = PhilosopherState.Wartet;
+    PhilosopherState state = PhilosopherState.wartet;
     Fork left;
     Fork right;
     int timesEaten = 0;
@@ -53,19 +53,19 @@ class Philosopher implements Runnable {
     }
     public void run() {
         do {
-            if (state == PhilosopherState.Denkt) {    //  all that pondering
-                state = PhilosopherState.Wartet;       //  made me hungry
-            } else { // ==PhilosopherState.Wartet
+            if (state == PhilosopherState.denkt) {    //  all that pondering
+                state = PhilosopherState.wartet;       //  made me hungry
+            } else { // ==PhilosopherState.wartet
                 if (token.get() == id) {            //  my turn now
                     waitForFork(left);
                     waitForFork(right);             //  Ah needs me some foahks!
                     token.set((id+2)% Main.philosopherCount);
-                    state = PhilosopherState.Isst;
+                    state = PhilosopherState.isst;
                     timesEaten++;
                     sleep();                        //  eat for a while
                     left.holder.set(Fork.ON_TABLE);
                     right.holder.set(Fork.ON_TABLE);
-                    state = PhilosopherState.Denkt;   //  ponder for a while
+                    state = PhilosopherState.denkt;   //  ponder for a while
                     sleep();
                 } else {                    //  token.get() != id, so not my turn
                     sleep();
