@@ -1,4 +1,4 @@
-package dining.philosopher.ch;
+package dining.philosopher;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

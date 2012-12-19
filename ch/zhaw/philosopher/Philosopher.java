@@ -1,4 +1,4 @@
-package dining.philosopher.ch;
+package dining.philosopher;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
